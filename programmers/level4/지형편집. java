@@ -1,0 +1,49 @@
+public class Solution {
+    public long solution(int[][] land, int P, int Q) {
+        long answer = Long.MAX_VALUE;
+        
+        long s = Long.MAX_VALUE;
+        long e = -1;
+        
+        for(int[] lan : land) {
+        	for(int l : lan) {
+        		s = Math.min(s, l);
+        		e = Math.max(e, l);
+        	}
+        }
+        
+        long mid = 0;
+        
+        while(s<=e) {
+        	mid = (s+e)/2;
+        	long cost1 = getCost(mid, P, Q, land); 
+        	long cost2 = getCost(mid+1, P, Q, land); 
+        	if(cost1 > cost2) {
+        		answer = Math.min(cost2, answer);
+        		s = mid+1;
+        	}else { // cost1 <= cost2
+        		answer = Math.min(cost1, answer);
+        		e = mid-1;
+        	}
+        	
+        }
+        
+        return answer;
+    }
+	
+	public long getCost(long mid, int p, int q, int[][] land) {
+		long result = 0;
+		
+		for(int i = 0; i < land.length; i++) {
+			for(int j = 0; j < land.length; j++) {
+				if(land[i][j]>mid) {
+					result += (land[i][j] - mid)*q;
+				}
+				if(land[i][j]<mid) {
+					result += (mid-land[i][j])*p;
+				}
+			}
+		}
+		return result;
+	}
+}
