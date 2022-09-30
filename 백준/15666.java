@@ -51,6 +51,6 @@ public class bj15666 {
             if(idx > 0 && arr[idx - 1] > list.get(i)) continue;
             arr[idx] = list.get(i);
             permutation(n, m, idx + 1, result + "," +list.get(i));
-        }
+        } 
     }
 }
