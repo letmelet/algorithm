@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class bj15666 {
+public class bj15666 { 
 
     static StringBuilder sb = new StringBuilder();
     static int[] arr;
